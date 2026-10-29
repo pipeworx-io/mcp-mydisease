@@ -1,0 +1,54 @@
+[
+  {
+    "name": "query",
+    "description": "Search MyDisease.info for diseases by free-text name or fielded query. Returns matching hits, each keyed by a MONDO disease id (e.g. \"MONDO:0015967\") with the best-matching ontology and annotation keys. Use this to resolve a disease name to canonical ontology ids before calling the \"disease\" tool. Free text like \"diabetes\" or \"asthma\" works; fielded queries like \"mondo.label:asthma\" or \"disgenet.xrefs.disease_name:...\" narrow the search.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Free-text disease name (e.g. \"diabetes\") or a fielded query (e.g. \"mondo.label:asthma\")."
+        },
+        "fields": {
+          "type": "string",
+          "description": "Comma-separated list of annotation fields to return (default: all fields)."
+        },
+        "size": {
+          "type": "number",
+          "description": "Number of hits to return, 1-1000 (default 10)."
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  },
+  {
+    "name": "disease",
+    "description": "Fetch the full aggregated annotation object for a single disease id. Accepts MONDO (\"MONDO:0015967\"), DOID (\"DOID:9351\"), OMIM (\"OMIM:125853\") and other supported ontology ids. Returns cross-referenced data including MONDO ontology (labels, synonyms, xrefs, parents/children), gene-disease associations from DisGeNET, phenotypes from HPO, and chemical-disease relationships from CTD. Resolve a name to an id first via the \"query\" tool.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A disease id such as \"MONDO:0015967\", \"DOID:9351\", or \"OMIM:125853\"."
+        },
+        "fields": {
+          "type": "string",
+          "description": "Comma-separated list of annotation fields to return (default: all fields)."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  },
+  {
+    "name": "metadata",
+    "description": "Returns MyDisease.info build metadata: total disease document count, available annotation sources (MONDO, DOID, OMIM, DisGeNET, HPO, CTD), and their current release versions.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {}
+    }
+  }
+]

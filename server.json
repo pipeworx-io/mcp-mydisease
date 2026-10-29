@@ -3,7 +3,7 @@
   "name": "io.github.pipeworx-io/mydisease",
   "title": "Mydisease",
   "description": "MyDisease.info MCP. Aggregated disease annotation from the BioThings ecosystem: MONDO/DOID/OMIM…",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "websiteUrl": "https://pipeworx.io/packs/mydisease",
   "repository": {
     "url": "https://github.com/pipeworx-io/mcp-mydisease",
